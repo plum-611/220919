@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Catch Mario If You Can</title>
+
+	<style type="text/css">
+		body{margin: 0; text-align: center;}
+		.box{width: 50px; ;position:  absolute; left: 100px; top: 100px;}
+		.shiftani{width: 100vw; height: 80vh; 
+			background: url(cloud1.png);
+			background-size:300px auto ;
+			animation: shift 10s infinite linear;}
+		@keyframes shift{
+			from{background-position: 0 0;}
+			to{background-position: -50vw 0;}
+			}
+			#control {margin: auto ; margin-top: 20px;}
+
+	</style>
+
+</head>
+<body>
+	<h1>Catch Mario If You Can</h1>
+	<div id="w1">
+	
+	<input type="range" id="control" step="0.1 "min="0.2" max="10" value="2">
+	
+	<input type="color" id="c1">
+	
+	<div  class="shiftani" id="back" ></div>
+	</div>
+	
+
+	<script type="text/javascript">
+		
+		makeBox();
+
+		function makeBox(){
+		
+			var img = document.createElement("img");
+			img.src = "mario.png";
+			img.className = "box";
+			var b = Math.random()*window.innerWidth;
+			var c = Math.random()*window.innerHeight;
+			img.style.left = b + "px";
+			img.style.top = c + "px";
+			
+			img.onclick = function(){
+				img.parentNode.removeChild(img);
+				makeBox();
+			}
+			document.body.appendChild(img);
+		}
+
+		control.oninput = function(){
+			back.style.animationDuration = control.value + "s";
+		
+			
+		}
+
+		c1.oninput = function(){
+			w1.style.background = c1.value;
+		}
+
+	</script>
+
+</body>
+</html>
